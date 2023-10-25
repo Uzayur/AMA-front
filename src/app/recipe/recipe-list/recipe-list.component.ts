@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '~/app/recipe/recipe.service';
 import { Recipe } from '~/app/recipe/recipe.model';
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDeleteDialogComponent } from '~/app/confirm-delete-dialog/confirm-delete-dialog.component';
 import { ToastrService } from '~/app/toaster/toastr.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-recipe-list',
@@ -24,9 +24,7 @@ export class RecipeListComponent implements OnInit {
         console.error('Fetch recipe error', error);
         this.toastr.showError('Erreur lors du chargement des données', 'Erreur');
       }
-    }
-
-    );
+    });
   }
 
   confirmDelete(recipe: Recipe) {
