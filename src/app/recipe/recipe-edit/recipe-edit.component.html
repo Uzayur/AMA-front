@@ -1,0 +1,33 @@
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Modifier la Recette</h5>
+      <button type="button" class="close" (click)="onClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="onSave()">
+        <mat-form-field>
+          <input matInput placeholder="Nom de la Recette" [(ngModel)]="updatedRecipeData.name" name="name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Description" [(ngModel)]="updatedRecipeData.description" name="description" required></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Ingrédients (séparés par des virgules)" [(ngModel)]="updatedRecipeData.ingredients" name="ingredients" required>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea matInput placeholder="Instructions" [(ngModel)]="updatedRecipeData.instructions" name="instructions" required></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="onClose()">Retour</button>
+      <button type="button" class="btn btn-primary" (click)="onSave()">Valider</button>
+    </div>
+  </div>
+</div>
+
+
+

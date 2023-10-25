@@ -1,0 +1,19 @@
+<div class="recipe?-detail">
+  <h2>Détails de la Recette</h2>
+  <div class="recipe?-info">
+    <h3>{{ recipe?.name }}</h3>
+    <p>{{ recipe?.description }}</p>
+    <p>Ingrédients:</p>
+    <ul>
+      <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient }}</li>
+    </ul>
+    <p>Instructions:</p>
+    <p>{{ recipe?.instructions }}</p>
+    <p>Crée le :</p>
+    <p>{{ createdAt }}</p>
+    <p>Modifié le:</p>
+    <p>{{ updatedAt }}</p>
+  </div>
+
+  <button (click)="editRecipe()">Modifier la Recette</button>
+</div>

@@ -1,0 +1,22 @@
+.recipe-list {
+  color: #FFF;
+  padding: 20px;
+}
+
+.recipe-item {
+  background-color: #FEC2A9;
+  border: 1px solid #E75A44;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recipe-item a {
+  text-decoration: none;
+  color: #E75A44;
+}
+
+.recipe-item a:hover {
+  text-decoration: underline;
+}

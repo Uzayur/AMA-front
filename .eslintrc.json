@@ -1,0 +1,71 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "ignorePatterns": ["*.svg"],
+    "globals": {
+        "module": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"],
+        "ecmaVersion": 13,
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "import", "prettier"],
+    "rules": {
+        "max-lines-per-function": ["error", 250],
+        "max-len": ["error", 500],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        "@typescript-eslint/no-unused-vars": ["warn"],
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/ban-types": [
+            "error",
+            {
+                "types": {
+                    "object": false
+                },
+                "extendDefaults": true
+            }
+        ],
+        "no-case-declarations": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "ts": "never"
+            }
+        ],
+        "import/order": "error",
+        "prefer-destructuring": [
+            "error",
+            {
+                "array": true,
+                "object": true
+            },
+            {
+                "enforceForRenamedProperties": false
+            }
+        ],
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "@typescript-eslint/lines-between-class-members": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true
+            },
+            "node": {
+                "extensions": [".ts"]
+            }
+        }
+    }
+}
