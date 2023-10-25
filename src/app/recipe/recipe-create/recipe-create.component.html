@@ -1,0 +1,18 @@
+<div class="recipe-create">
+  <h2>Créer une nouvelle Recette</h2>
+  <form [formGroup]="form" (ngSubmit)="saveRecipe()">
+    <mat-form-field>
+      <input matInput placeholder="Nom de la Recette" formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Ingrédients (séparés par des virgules)" formControlName="ingredients" required>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Instructions" formControlName="instructions" required></textarea>
+    </mat-form-field>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Créer la Recette</button>
+  </form>
+</div>

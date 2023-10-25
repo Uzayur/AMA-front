@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '~/app/recipe/recipe.service';
 import { Recipe } from '~/app/recipe/recipe.model';
+import { ToastrService } from '~/app/toaster/toastr.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -15,7 +16,8 @@ export class RecipeEditComponent {
     private dialogRef: MatDialogRef<RecipeEditComponent>, // Allow control on component
     @Inject(MAT_DIALOG_DATA) private data: Recipe, // Inject data using Angular Material constant
     private formBuilder: FormBuilder,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private toastr: ToastrService
   ) {
     this.form = this.formBuilder.group({
       name: [this.data.name, Validators.required],
@@ -29,8 +31,15 @@ export class RecipeEditComponent {
     if (this.form.valid) {
       const updatedRecipeData = { ...this.data, ...this.form.value };
       updatedRecipeData.updatedAt = new Date();
-      this.recipeService.updateRecipe(this.data.id, updatedRecipeData).subscribe(() => {
-        this.dialogRef.close(updatedRecipeData);
+      this.recipeService.updateRecipe(this.data.id, updatedRecipeData).subscribe({
+        next: () => {
+          this.dialogRef.close(updatedRecipeData);
+          this.toastr.showSuccess('La recette a bien été modifiée', 'Succès');
+        },
+        error: (error) => {
+          console.log('Update recipe error', error);
+          this.toastr.showError('La modification de la recette a échouée', 'Erreur');
+        }
       });
     }
   }

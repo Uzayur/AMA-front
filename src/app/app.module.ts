@@ -14,6 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { RecipeCreateComponent } from '~/app/recipe/recipe-create/recipe-create.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeEditComponent,
-    ConfirmDeleteDialogComponent
+    ConfirmDeleteDialogComponent,
+    RecipeCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
