@@ -6,6 +6,7 @@
         <h3>{{ recipe.name }}</h3>
         <p>{{ recipe.description }}</p>
       </a>
+      <button (click)="confirmDelete(recipe)" class="delete-button">Supprimer</button>
     </li>
   </ul>
 </div>
