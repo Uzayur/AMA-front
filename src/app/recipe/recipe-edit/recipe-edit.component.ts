@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '~/app/recipe/recipe.service';
 import { Recipe } from '~/app/recipe/recipe.model';
 
@@ -10,7 +10,6 @@ import { Recipe } from '~/app/recipe/recipe.model';
 })
 export class RecipeEditComponent {
   form: FormGroup;
-  updatedRecipeData: Recipe;
 
   constructor(
     private dialogRef: MatDialogRef<RecipeEditComponent>, // Allow control on component
@@ -18,23 +17,20 @@ export class RecipeEditComponent {
     private formBuilder: FormBuilder,
     private recipeService: RecipeService
   ) {
-
-    // Remove reference from data object
-    this.updatedRecipeData = { ...data };
-
     this.form = this.formBuilder.group({
-      name: [this.updatedRecipeData.name, Validators.required],
-      description: [this.updatedRecipeData.description, Validators.required],
-      ingredients: [this.updatedRecipeData.ingredients, Validators.required],
-      instructions: [this.updatedRecipeData.instructions, Validators.required]
+      name: [this.data.name, Validators.required],
+      description: [this.data.description, Validators.required],
+      ingredients: [this.data.ingredients, Validators.required],
+      instructions: [this.data.instructions, Validators.required]
     });
   }
 
   saveChanges() {
     if (this.form.valid) {
-      this.updatedRecipeData.updatedAt = new Date();
-      this.recipeService.updateRecipe(this.data.id, this.updatedRecipeData).subscribe(() => {
-        this.dialogRef.close(this.updatedRecipeData);
+      const updatedRecipeData = { ...this.data, ...this.form.value };
+      updatedRecipeData.updatedAt = new Date();
+      this.recipeService.updateRecipe(this.data.id, updatedRecipeData).subscribe(() => {
+        this.dialogRef.close(updatedRecipeData);
       });
     }
   }
@@ -47,9 +43,9 @@ export class RecipeEditComponent {
     }
   }
 
-  markFormFieldsAsTouched(form: FormGroup | FormArray) {
+  markFormFieldsAsTouched(form: FormGroup) {
     Object.values(form.controls).forEach(control => {
-      if (control instanceof FormGroup || control instanceof FormArray) {
+      if (control instanceof FormGroup) {
         this.markFormFieldsAsTouched(control);
       } else {
         control.markAsTouched();

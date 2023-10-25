@@ -7,18 +7,18 @@
       </button>
     </div>
     <div class="modal-body">
-      <form (ngSubmit)="onSave()">
+      <form [formGroup]="form" (ngSubmit)='onSave()'>
         <mat-form-field>
-          <input matInput placeholder="Nom de la Recette" [(ngModel)]="updatedRecipeData.name" name="name" required>
+          <input matInput placeholder="Nom de la Recette" formControlName="name" required>
         </mat-form-field>
         <mat-form-field>
-          <textarea matInput placeholder="Description" [(ngModel)]="updatedRecipeData.description" name="description" required></textarea>
+          <textarea matInput placeholder="Description" formControlName="description" required></textarea>
         </mat-form-field>
         <mat-form-field>
-          <input matInput placeholder="Ingrédients (séparés par des virgules)" [(ngModel)]="updatedRecipeData.ingredients" name="ingredients" required>
+          <input matInput placeholder="Ingrédients (séparés par des virgules)" formControlName="ingredients" required>
         </mat-form-field>
         <mat-form-field>
-          <textarea matInput placeholder="Instructions" [(ngModel)]="updatedRecipeData.instructions" name="instructions" required></textarea>
+          <textarea matInput placeholder="Instructions" formControlName="instructions" required></textarea>
         </mat-form-field>
       </form>
     </div>
