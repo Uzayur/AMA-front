@@ -3,8 +3,77 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  .responsive-modal {
-    max-width: 100%;
+@media (max-width: 450px) {
+  .modal {
+    width: 280px;
   }
+}
+
+@media (min-width: 450px) and (max-width: 768px) {
+  .modal {
+    width: 300px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .modal {
+    width: 400px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .modal {
+    width: 600px;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-field {
+  align-self: center;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.modal-header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .modal-title {
+    font-size: 25px;
+    color: #3f51b5;
+  }
+
+  @media (max-width: 450px) {
+    .modal-title {
+      font-size: 20px;
+    }
+  }
+
+  .close {
+    background: none;
+    border: none;
+    color: #3f51b5;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  margin: 15px;
 }

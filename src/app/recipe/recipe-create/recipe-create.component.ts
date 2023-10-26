@@ -10,6 +10,7 @@ import { ToastrService } from '~/app/toaster/toastr.service';
 @Component({
   selector: 'app-recipe-create',
   templateUrl: './recipe-create.component.html',
+  styleUrls: ['./recipe-create.component.css']
 })
 export class RecipeCreateComponent {
   form: FormGroup;
