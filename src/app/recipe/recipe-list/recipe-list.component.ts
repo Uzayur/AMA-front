@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
+  searchText: string = '';
 
   constructor(private recipeService: RecipeService, private dialog: MatDialog) { }
 
@@ -43,4 +44,16 @@ export class RecipeListComponent implements OnInit {
       }
     });
   }
+
+  get filteredRecipes() {
+    return this.recipes.filter((recipe) => {
+      const searchInName = recipe.name.toLowerCase().includes(this.searchText.toLowerCase());
+      const searchInIngredients = recipe.ingredients.some((ingredient) =>
+        ingredient.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+
+      return searchInName || searchInIngredients;
+    });
+  }
+
 }

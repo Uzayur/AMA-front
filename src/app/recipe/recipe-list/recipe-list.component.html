@@ -1,8 +1,13 @@
 <div class="header">
   <h2>Mes Recettes</h2>
 </div>
+<div class="search-bar">
+  <mat-form-field class='search-form-field'>
+    <input class='search-input' matInput placeholder="Rechercher des recettes" [(ngModel)]="searchText">
+  </mat-form-field>
+</div>
 <div class="recipe-list" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center center">
-  <ng-container *ngFor="let recipe of recipes">
+  <ng-container *ngFor="let recipe of filteredRecipes">
     <div class="recipe-card">
       <div class="card-header-container">
         <h4 class="card-title">{{ recipe.name }}</h4>
