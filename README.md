@@ -1,14 +1,17 @@
 # AMA-front
 
-## Configuration de l'environnement
-
-1. Exécutez `npm install` pour installer les dépendances.
-2. Exécutez `ng serve` pour lancer l'application.
-
-Le serveur sera accessible à l'adresse : `http://localhost:4200`.
+This application uses Angular Material for its interface design.
 
 
-## Lien repos
+## Environment Setup
+
+1. Run `npm install` to install the dependencies.
+2. Run `ng serve` to start the application.
+
+The application will be accessible at: `http://localhost:4200`.
+
+
+## Repository Links
 
 - Frontend : https://github.com/Uzayur/AMA-front
 - Backend : https://github.com/Uzayur/AMA-back
