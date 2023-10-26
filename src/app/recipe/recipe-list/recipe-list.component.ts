@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '~/app/recipe/recipe.service';
 import { Recipe } from '~/app/recipe/recipe.model';
 import { ConfirmDeleteDialogComponent } from '~/app/confirm-delete-dialog/confirm-delete-dialog.component';
-import { ToastrService } from '~/app/toaster/toastr.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -13,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService, private dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(private recipeService: RecipeService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.recipeService.getRecipes().subscribe({
@@ -22,7 +21,6 @@ export class RecipeListComponent implements OnInit {
       },
       error: (error) => {
         console.error('Fetch recipe error', error);
-        this.toastr.showError('Erreur lors du chargement des données', 'Erreur');
       }
     });
   }
@@ -37,11 +35,9 @@ export class RecipeListComponent implements OnInit {
         this.recipeService.deleteRecipe(recipe.id).subscribe({
           next: () => {
             this.recipes = this.recipes.filter(item => item.id !== recipe.id);
-            this.toastr.showSuccess('La recette a bien été supprimée', 'Succès');
           },
           error: (error) => {
             console.log('Delete recipe error', error)
-            this.toastr.showError('La suppression a échoué', 'Erreur');
           }
         });
       }
