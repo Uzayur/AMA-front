@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '~/app/recipe/recipe.service';
-import { getMaximumId } from '../../../../utils/get-maximum-id';
 import { Recipe } from '~/app/recipe/recipe.model';
-import { StringToStringArray } from '../../../../utils/string-to-string-array';
+import { getMaximumId } from '~/utils/get-maximum-id';
+import { StringToStringArray } from '~/utils/string-to-string-array';
 
 @Component({
   selector: 'app-recipe-create',
@@ -43,6 +43,7 @@ export class RecipeCreateComponent {
       };
       this.recipeService.createRecipe(newRecipeData).subscribe({
         next: () => {
+          // Navigate on recipe list
           void this.router.navigate(['/recipes']);
         },
         error: (error) => {

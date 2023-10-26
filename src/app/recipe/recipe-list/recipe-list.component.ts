@@ -13,7 +13,10 @@ export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
   searchText: string = '';
 
-  constructor(private recipeService: RecipeService, private dialog: MatDialog) { }
+  constructor(
+    private recipeService: RecipeService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.recipeService.getRecipes().subscribe({
@@ -55,5 +58,4 @@ export class RecipeListComponent implements OnInit {
       return searchInName || searchInIngredients;
     });
   }
-
 }
